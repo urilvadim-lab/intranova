@@ -464,7 +464,7 @@ button {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 640px) 1fr;
+  grid-template-columns: minmax(0, 700px) 1fr;
   align-items: end;
   gap: 40px;
 }
@@ -496,6 +496,7 @@ button {
 
 .hero .h1 {
   margin-top: 22px;
+  font-size: clamp(30px, 4.7vw, 62px);
 }
 
 .hero__lead {
@@ -1478,6 +1479,162 @@ button {
 .legal a {
   color: var(--violet);
   text-decoration: underline;
+}
+
+/* ---------- Варианты сайта: образ первого экрана и акценты ---------- */
+
+.hero--deep {
+  background: radial-gradient(120% 90% at 70% 45%, #15112a 0%, #08070e 60%, #050409 100%);
+}
+
+.hero--deep .nh-vignette {
+  z-index: 1;
+}
+
+.hero--deep .countdown {
+  background: rgba(8, 7, 14, 0.6);
+}
+
+/* в вариантах с образом таймер уходит в левую колонку, чтобы не закрывать фигуру */
+@media (min-width: 961px) {
+  .hero--deep .hero__inner {
+    grid-template-columns: minmax(0, 640px);
+  }
+  .hero--deep .countdown {
+    justify-self: start;
+    margin-top: 8px;
+  }
+}
+
+/* вариант 1 «Лик»: фиолетовый + золото */
+.theme-v1 {
+  --grad: linear-gradient(100deg, #b9a8ff 0%, #e6b8ff 45%, #ffc983 100%);
+}
+
+.theme-v1 .chip__dot {
+  background: #ffc983;
+  box-shadow: 0 0 0 4px rgba(255, 201, 131, 0.2);
+}
+
+/* вариант 2 / основная палитра: тёплый почти-чёрный, золото, персик, коралл; фиолетовый — второстепенный */
+.theme-v2 {
+  --night: #0d0b10;
+  --night-2: #17131a;
+  --on-night-muted: rgba(246, 238, 230, 0.68);
+  --night-line: rgba(255, 220, 190, 0.14);
+  --violet: #c98a3e;
+  --violet-dark: #a96f2b;
+  --grad: linear-gradient(100deg, #ffe0b0 0%, #ffb877 50%, #e08a6a 100%);
+}
+
+.theme-v2 .btn--primary {
+  color: #1a1206;
+  background: linear-gradient(100deg, #ffd59c, #f0a75c);
+  box-shadow: 0 10px 30px -10px rgba(240, 167, 92, 0.7);
+}
+
+.theme-v2 .btn--primary:hover {
+  background: linear-gradient(100deg, #ffe2b8, #f6b673);
+}
+
+.theme-v2 .section--dark .label,
+.theme-v2 .shead--light .label,
+.theme-v2 .hero__facts svg,
+.theme-v2 .signup__facts svg,
+.theme-v2 .logo__mark {
+  color: #ffc983;
+}
+
+.theme-v2 .chip__dot {
+  background: #ffc983;
+  box-shadow: 0 0 0 4px rgba(255, 201, 131, 0.2);
+}
+
+.theme-v2 .audience {
+  background: var(--night-2);
+}
+
+.theme-v2 .header--solid {
+  background: rgba(13, 11, 16, 0.86);
+}
+
+.theme-v2 .methods__aura,
+.theme-v2 .hero__aura {
+  background:
+    radial-gradient(closest-side at 40% 50%, rgba(255, 180, 100, 0.35), transparent),
+    radial-gradient(closest-side at 70% 40%, rgba(124, 104, 255, 0.35), transparent);
+}
+
+/* ---------- Голова из частиц ---------- */
+
+.nh-stage {
+  position: relative;
+  min-height: 100svh;
+  background: radial-gradient(120% 90% at 68% 45%, #12132a 0%, #08080f 60%, #050509 100%);
+  color: var(--on-night);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.nh-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+/* затемнение по краям — фокус на голове и тексте */
+.nh-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 9, 0.85) 0%, rgba(5, 5, 9, 0.35) 38%, transparent 60%),
+    linear-gradient(to top, rgba(5, 5, 9, 0.9), transparent 30%);
+}
+
+.nh-text {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.nh-words {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nh-word {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(238, 236, 255, 0.92);
+  text-shadow: 0 0 12px rgba(150, 140, 255, 0.9);
+  white-space: nowrap;
+  animation: nh-word 3.6s ease-in-out forwards;
+}
+
+.nh-word::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px #b7adff;
+  vertical-align: middle;
+}
+
+@keyframes nh-word {
+  0% { opacity: 0; filter: blur(6px); }
+  20% { opacity: 1; filter: blur(0); }
+  70% { opacity: 1; }
+  100% { opacity: 0; filter: blur(4px); transform: translate(-50%, -80%); }
 }
 
 /* ---------- Доступность ---------- */

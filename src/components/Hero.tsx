@@ -3,8 +3,17 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { EVENT, SPEAKERS } from "@/content";
+import dynamic from "next/dynamic";
 import Icon from "./Icon";
 import NeuroCanvas from "./NeuroCanvas";
+
+// тяжёлые WebGL-образы грузим только в браузере и только там, где они нужны
+const NeuroFace = dynamic(() => import("./neuro/NeuroFace"), { ssr: false });
+const NeuroDance = dynamic(() => import("./neuro/NeuroDance"), { ssr: false });
+const NeuroDancer = dynamic(() => import("./neuro/NeuroDancer"), { ssr: false });
+const NeuroSwarm = dynamic(() => import("./neuro/NeuroSwarm"), { ssr: false });
+
+export type HeroVisual = "network" | "face" | "dance" | "dancer" | "swarm";
 
 function useCountdown(target: string) {
   const [left, setLeft] = useState<number | null>(null);
@@ -21,16 +30,25 @@ function useCountdown(target: string) {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-export default function Hero() {
+export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
   const reduce = useReducedMotion();
   const t = useCountdown(EVENT.startsAt);
   const fade = (delay: number) =>
     reduce ? {} : { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const } };
 
   return (
-    <section className="hero" id="top">
-      <div className="hero__aura" aria-hidden="true" />
-      <NeuroCanvas className="hero__canvas" />
+    <section className={`hero${visual === "network" ? "" : " hero--deep"}`} id="top">
+      {visual === "network" && (
+        <>
+          <div className="hero__aura" aria-hidden="true" />
+          <NeuroCanvas className="hero__canvas" />
+        </>
+      )}
+      {visual === "face" && <NeuroFace className="hero__canvas" />}
+      {visual === "dance" && <NeuroDance className="hero__canvas" />}
+      {visual === "dancer" && <NeuroDancer className="hero__canvas" />}
+      {visual === "swarm" && <NeuroSwarm className="hero__canvas" />}
+      {visual !== "network" && <div className="nh-vignette" aria-hidden="true" />}
 
       <div className="container hero__inner">
         <div className="hero__content">
@@ -39,8 +57,9 @@ export default function Hero() {
           </motion.p>
 
           <motion.h1 className="h1" {...fade(0.12)}>
-            Интенсив по <br />
-            <span className="grad">психосоматике</span>
+            Интенсив <br />
+            по работе с <br />
+            <span className="grad">психосоматикой</span>
           </motion.h1>
 
           <motion.p className="hero__lead" {...fade(0.2)}>

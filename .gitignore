@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# демо-вариант образа, не публикуем
+/src/app/lab/
+/public/_src/
+/public/hero/
+/public/models/
+/src/app/v1/
+/src/app/v2/
+/src/app/v3/
+/src/components/NeuroHead.tsx
