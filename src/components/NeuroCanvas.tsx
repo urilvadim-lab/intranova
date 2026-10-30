@@ -43,7 +43,7 @@ function glowSprite([r, g, b]: [number, number, number], core: number) {
   return c;
 }
 
-export default function NeuroCanvas({ className }: { className?: string }) {
+export default function NeuroCanvas({ className, phrases: showPhrases = true }: { className?: string; phrases?: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -250,7 +250,7 @@ export default function NeuroCanvas({ className }: { className?: string }) {
       });
 
       // фразы: проявляются у ближнего нейрона (он вспыхивает), живут ~4.5 с и растворяются, уплывая вверх
-      if (time - lastPhrase > 3200 && phrases.length < 2 && nodes.length) {
+      if (showPhrases && time - lastPhrase > 3200 && phrases.length < 2 && nodes.length) {
         const mobile = w < 860;
         const ok: number[] = [];
         for (let i = 0; i < nodes.length; i++) {
@@ -363,7 +363,7 @@ export default function NeuroCanvas({ className }: { className?: string }) {
       window.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerleave", onLeave);
     };
-  }, []);
+  }, [showPhrases]);
 
   return <canvas ref={ref} className={className} aria-hidden="true" />;
 }

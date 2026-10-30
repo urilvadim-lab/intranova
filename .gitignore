@@ -1,4 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+п»ї# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
@@ -40,7 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# демо-вариант образа, не публикуем
+# РґРµРјРѕ-РІР°СЂРёР°РЅС‚ РѕР±СЂР°Р·Р°, РЅРµ РїСѓР±Р»РёРєСѓРµРј
 /src/app/lab/
 /public/_src/
 /public/hero/
@@ -49,3 +49,4 @@ next-env.d.ts
 /src/app/v2/
 /src/app/v3/
 /src/components/NeuroHead.tsx
+/src/app/v4/

@@ -13,6 +13,7 @@ const PATHS: Record<string, string> = {
   arrow: "M5 12h14m-5-6 6 6-6 6",
   tg: "M21 4 3 11l6 2m12-9-4 16-8-7m12-9L9 13m0 0v6l3-3.5",
   mail: "M3 6h18v12H3zM3 7l9 6 9-6",
+  ig: "M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm4.5 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm5.2-1.7h.01",
 };
 
 export default function Icon({ name, size = 22, className }: { name: string; size?: number; className?: string }) {
