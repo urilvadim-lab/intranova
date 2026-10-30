@@ -14,9 +14,18 @@ export default function Signup() {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("/send.php", { method: "POST", body: new FormData(e.currentTarget) });
+      // GitHub Pages не выполняет серверный код — заявки уходят на почту через FormSubmit
+      const data = new FormData(e.currentTarget);
+      data.append("_subject", `Заявка на интенсив: ${data.get("name")}`);
+      data.append("_template", "table");
+      data.append("_captcha", "false");
+      const res = await fetch(`https://formsubmit.co/ajax/${CONTACTS.email}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
       const json = await res.json().catch(() => null);
-      if (!res.ok || !json?.ok) throw new Error();
+      if (!res.ok || String(json?.success) !== "true") throw new Error();
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -85,7 +94,7 @@ export default function Signup() {
                 <textarea name="message" rows={3} maxLength={1500} />
               </label>
               {/* ловушка для ботов */}
-              <input className="form__trap" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+              <input className="form__trap" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <label className="check">
                 <input type="checkbox" name="consent" required />
                 <span>
