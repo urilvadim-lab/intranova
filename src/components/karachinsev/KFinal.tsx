@@ -112,9 +112,9 @@ export default function KFinal() {
               </p>
               <div className="kf-card">
                 <ul className="kf-card__rows">
-                  <li><b>Первая сессия</b> — 50 минут, 5 000 ₽ или 70 $</li>
-                  <li><b>Очно</b> — Москва, ул. Кравченко, 11, м. Проспект Вернадского</li>
-                  <li><b>Онлайн</b> — по видеосвязи</li>
+                  <li><b>Первая сессия</b> — 50 минут</li>
+                  <li><b>Очно</b> — Москва, ул. Кравченко, 11, м. Проспект Вернадского · 6 000 ₽</li>
+                  <li><b>Онлайн</b> — по видеосвязи · 5 000 ₽ или 70 $</li>
                   <li><b>Взрослые и подростки</b></li>
                 </ul>
               </div>
@@ -255,12 +255,12 @@ export default function KFinal() {
               <p>Буду рад знакомству.</p>
               <Contacts big />
               <ul className="kf-info kf-info--contact">
-                <li><b>Первая сессия</b> — 50 минут, 5 000 ₽ или 70 $</li>
+                <li><b>Первая сессия</b> — 50 минут</li>
                 <li>
                   <b>Очно</b> — Москва, ул. Кравченко, 11, м. Проспект Вернадского ·{" "}
-                  <a href={MAP} target="_blank" rel="noopener noreferrer">на карте</a>
+                  6 000 ₽ · <a href={MAP} target="_blank" rel="noopener noreferrer">на карте</a>
                 </li>
-                <li><b>Онлайн</b> — по видеосвязи</li>
+                <li><b>Онлайн</b> — по видеосвязи · 5 000 ₽ или 70 $</li>
                 <li><b>Коллегам</b> — супервизия онлайн, 4 000 ₽ или 60 $</li>
               </ul>
             </div>
