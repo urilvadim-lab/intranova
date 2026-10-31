@@ -56,15 +56,15 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
             <span className="chip__dot" /> Однодневный интенсив · офлайн
           </motion.p>
 
-          <motion.h1 className="h1" {...fade(0.12)}>
-            Интенсив <br />
-            по работе с <br />
-            <span className="grad">психосоматикой</span>
+          <motion.h1 className="h1 hero__title" {...fade(0.12)}>
+            Интенсив практической <br />
+            работы с <span className="grad">психосоматикой</span>
           </motion.h1>
 
           <motion.p className="hero__lead" {...fade(0.2)}>
-            Как тело реагирует на чувства, людей и ситуации — и что с этим делать. Современная
-            психосоматика, телесные техники и глубокая работа с особыми состояниями сознания.
+            Работа с телесными симптомами, эмоциональным напряжением и психологическим компонентом заболеваний.
+            Практики, современные психологические и гипнотические методы, новые способы понимания и изменения
+            привычных реакций.
           </motion.p>
 
           <motion.ul className="hero__facts" {...fade(0.28)}>
@@ -78,7 +78,7 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
             <li>
               <Icon name="clock" />
               <span>
-                <b>{EVENT.time}</b>6 часов практики
+                <b>{EVENT.time}</b>{EVENT.duration}
               </span>
             </li>
             <li>
@@ -88,6 +88,20 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
               </span>
             </li>
           </motion.ul>
+
+          <motion.div className="hero__group" {...fade(0.32)}>
+            <p className="hero__seats">
+              <span className="hero__seats-dot" aria-hidden="true" />
+              {EVENT.seats ? `Всего ${EVENT.seats} мест. ` : "Количество мест ограничено. "}
+              Места бронируются заранее
+            </p>
+            <p className="hero__group-title">Небольшая группа — внимание каждому участнику</p>
+            <p className="hero__group-text">
+              Мы ограничиваем количество мест, чтобы сохранить комфортную атмосферу, возможность индивидуальной работы
+              и полноценного взаимодействия со специалистами. Каждый участник сможет получить внимание и поддержку в
+              процессе практик.
+            </p>
+          </motion.div>
 
           <motion.div className="hero__actions" {...fade(0.36)}>
             <a href="#signup" className="btn btn--primary">

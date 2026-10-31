@@ -9,7 +9,7 @@ export default function Program() {
           <SectionHead
             label="Программа"
             title={`${EVENT.dateLabel}, ${EVENT.time}`}
-            lead="Тайминг ориентировочный — подстраиваемся под темп группы."
+            lead="Предварительное расписание: оно может уточняться после согласования содержания со спикерами."
           />
           <Reveal>
             <a href="#signup" className="btn btn--primary">
@@ -24,7 +24,6 @@ export default function Program() {
               <li key={p.time} className={`program__row${p.pause ? " program__row--pause" : ""}`}>
                 <span className="program__time">{p.time}</span>
                 <span className="program__title">{p.title}</span>
-                <span className="program__who">{p.who}</span>
               </li>
             ))}
           </ol>

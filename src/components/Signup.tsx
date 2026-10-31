@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CONTACTS, EVENT, PRICES } from "@/content";
+import { CONTACTS, EVENT } from "@/content";
 import Icon from "./Icon";
 import { Reveal } from "./Reveal";
 
@@ -40,7 +40,7 @@ export default function Signup() {
           <p className="label">Запись</p>
           <h2 className="h2">Оставьте заявку на интенсив</h2>
           <p className="signup__lead">
-            Мы свяжемся с вами, подтвердим место, ответим на вопросы и пришлём реквизиты для оплаты и
+            Мы свяжемся с вами, забронируем место, ответим на вопросы и пришлём реквизиты для оплаты и
             адрес площадки.
           </p>
           <ul className="signup__facts">
@@ -77,17 +77,6 @@ export default function Signup() {
               <label className="field">
                 <span>Телефон или Telegram</span>
                 <input name="contact" required autoComplete="tel" maxLength={80} placeholder="+7 … или @username" />
-              </label>
-              <label className="field">
-                <span>Формат участия</span>
-                <select name="tariff" defaultValue={PRICES[0].name}>
-                  {PRICES.map((p) => (
-                    <option key={p.name} value={p.name}>
-                      {p.name} — {p.price}
-                    </option>
-                  ))}
-                  <option value="Пока не решил">Пока не решил(а)</option>
-                </select>
               </label>
               <label className="field">
                 <span>Вопрос или запрос (необязательно)</span>

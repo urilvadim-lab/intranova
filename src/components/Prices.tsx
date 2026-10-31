@@ -1,4 +1,4 @@
-import { EVENT, PRICES } from "@/content";
+import { EVENT, INCLUDED, PRICES } from "@/content";
 import Icon from "./Icon";
 import { Reveal, SectionHead } from "./Reveal";
 
@@ -6,16 +6,20 @@ export default function Prices() {
   return (
     <section className="section" id="price">
       <div className="container">
-        <SectionHead label="Стоимость" title="Выберите формат участия" lead="Количество мест ограничено размером зала." />
+        <SectionHead
+          label="Стоимость"
+          title="Стоимость участия"
+          lead="Формат участия и набор возможностей одинаковы — отличается только срок бронирования."
+        />
         <div className="prices">
           {PRICES.map((p, i) => (
             <Reveal as="article" className={`card price${p.featured ? " price--featured" : ""}`} key={p.name} delay={i * 0.08}>
-              {p.featured && <span className="price__badge">Максимум пользы</span>}
+              {p.featured && <span className="price__badge">Выгоднее</span>}
               <h3 className="h3">{p.name}</h3>
               <p className="price__value">{p.price}</p>
-              <p className="price__early">{p.early}</p>
+              <p className="price__early">{p.term}</p>
               <ul className="price__list">
-                {p.features.map((f) => (
+                {INCLUDED.map((f) => (
                   <li key={f}>
                     <Icon name="check" size={18} />
                     {f}
@@ -23,7 +27,7 @@ export default function Prices() {
                 ))}
               </ul>
               <a href="#signup" className={`btn ${p.featured ? "btn--primary" : "btn--outline"} btn--wide`}>
-                Выбрать
+                Забронировать
               </a>
             </Reveal>
           ))}
@@ -41,6 +45,10 @@ export default function Prices() {
             </ul>
           </Reveal>
         </div>
+        <Reveal className="prices__note">
+          <span className="hero__seats-dot" aria-hidden="true" />
+          Количество мест ограничено. Рекомендуем бронировать участие заранее.
+        </Reveal>
       </div>
     </section>
   );

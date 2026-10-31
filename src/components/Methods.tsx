@@ -6,7 +6,7 @@ export default function Methods() {
     <section className="section section--dark methods">
       <div className="methods__aura" aria-hidden="true" />
       <div className="container">
-        <SectionHead light label="Как будем работать" title="Четыре инструмента одного дня" />
+        <SectionHead light label="Как будем работать" title="Методы работы" />
         <ol className="methods__grid">
           {METHODS.map((m, i) => (
             <Reveal as="li" className="method" key={m.title} delay={i * 0.06}>

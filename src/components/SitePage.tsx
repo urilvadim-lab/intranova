@@ -1,4 +1,6 @@
 import About from "@/components/About";
+import Audience from "@/components/Audience";
+import Format from "@/components/Format";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -18,7 +20,9 @@ export default function SitePage({ visual = "network", theme }: { visual?: HeroV
       <main>
         <Hero visual={visual} />
         <About />
+        <Format />
         <Methods />
+        <Audience />
         <Program />
         <Speakers />
         <Videos />
