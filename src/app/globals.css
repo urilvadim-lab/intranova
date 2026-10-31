@@ -1663,11 +1663,26 @@ button {
   color: var(--on-night);
 }
 
-.hero__group-text {
-  margin-top: 4px;
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--on-night-muted);
+/* вторая строка подзаголовка: «чем работаем» — с новой строки и чуть тише */
+.hero__lead-2 {
+  display: block;
+  margin-top: 8px;
+  opacity: 0.78;
+}
+
+/* абзац о небольшой группе — в карточке «Основные форматы» */
+.format__group {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line);
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.format__group-title {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 /* С чем можно прийти — списки в карточках */
