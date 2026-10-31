@@ -1,34 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { VIDEOS } from "@/content";
 import Icon from "./Icon";
 import { Reveal, SectionHead } from "./Reveal";
 
-/** Плеер RuTube подгружается только по клику — страница не тяжелеет от iframe. */
-function Video({ id, title, duration, index }: { id: string; title: string; duration: string; index: number }) {
+type VideoItem = (typeof VIDEOS)[number] & { vertical?: boolean; place?: string };
+
+/** Свой ролик: до клика только лёгкая обложка, видео начинает грузиться после нажатия. */
+function Video({ id, title, text, duration, vertical, place, index }: VideoItem & { index: number }) {
   const [play, setPlay] = useState(false);
+  const ref = useRef<HTMLVideoElement>(null);
+  const start = () => {
+    setPlay(true);
+    requestAnimationFrame(() => ref.current?.play());
+  };
   return (
-    <Reveal as="article" className="video" delay={index * 0.08}>
+    <Reveal as="article" className={`video${vertical ? " video--vertical" : ""}`} delay={index * 0.08}>
       <div className="video__frame">
-        {play ? (
-          <iframe
-            src={`https://rutube.ru/play/embed/${id}?autoplay=1`}
-            title={title}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <button className="video__cover" onClick={() => setPlay(true)} aria-label={`Смотреть: ${title}`}>
-            <img src={`https://rutube.ru/api/video/${id}/thumbnail/?redirect=1`} alt="" loading="lazy" />
+        <video
+          ref={ref}
+          src={`/video/${id}.mp4`}
+          poster={`/video/${id}.webp`}
+          preload="none"
+          playsInline
+          controls={play}
+        />
+        {!play && (
+          <button className="video__cover" onClick={start} aria-label={`Смотреть: ${title}`}>
+            <img src={`/video/${id}.webp`} alt="" loading="lazy" />
             <span className="video__play">
               <Icon name="play" size={26} />
             </span>
+            {place && <span className="video__place">Снято на {place}</span>}
             <span className="video__time">{duration}</span>
           </button>
         )}
       </div>
       <h3 className="video__title">{title}</h3>
+      <p className="video__text">{text}</p>
     </Reveal>
   );
 }
@@ -40,10 +50,10 @@ export default function Videos() {
         <SectionHead
           label="Видео"
           title="Как проходит работа"
-          lead="Фрагменты сессий и разборов — чтобы вы заранее почувствовали формат."
+          lead="Фрагменты нашей работы и отзыв участника — чтобы вы заранее почувствовали формат."
         />
         <div className="videos">
-          {VIDEOS.map((v, i) => (
+          {(VIDEOS as readonly VideoItem[]).map((v, i) => (
             <Video key={v.id} {...v} index={i} />
           ))}
         </div>
