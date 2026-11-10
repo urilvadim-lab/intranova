@@ -39,11 +39,9 @@ export default function Contacts() {
               <Icon name="phone" />
             </span>
             <h3 className="h3">Телефон</h3>
-            <p className="muted">
-              {CONTACTS.phone} ({CONTACTS.phoneName})
-            </p>
+            <p className="muted">Позвоните {CONTACTS.phoneName} — ответим на вопросы по телефону.</p>
             <TrackedLink goal="phone_click" href={`tel:${CONTACTS.phoneTel}`} className="btn btn--primary">
-              Позвонить
+              <Icon name="phone" size={18} /> {CONTACTS.phone}
             </TrackedLink>
           </Reveal>
         </div>

@@ -1,12 +1,24 @@
-import { WHY } from "@/content";
+import { SPEAKERS, WHY } from "@/content";
 import { Reveal, SectionHead } from "./Reveal";
 
-/** Почему INTRANOVA: три специалиста — единое пространство практической работы. */
+/** Почему INTRANOVA + специалисты в одном блоке: идея объединения и три человека. */
 export default function Why() {
   return (
     <section className="section" id="why">
       <div className="container">
-        <SectionHead label="Почему INTRANOVA" title={WHY.title} lead={WHY.lead} />
+        <SectionHead
+          label="Почему INTRANOVA"
+          title={
+            <>
+              {WHY.titleLines.map((line) => (
+                <span className="why__line" key={line}>
+                  {line}
+                </span>
+              ))}
+            </>
+          }
+          lead={WHY.lead}
+        />
 
         <Reveal className="why__tags" delay={0.04}>
           {WHY.approaches.map((a) => (
@@ -16,12 +28,25 @@ export default function Why() {
           ))}
         </Reveal>
 
-        <div className="why__cards">
-          {WHY.cards.map((c, i) => (
-            <Reveal as="article" className="card why__card" key={c.who} delay={i * 0.06}>
-              <p className="why__who">{c.who}</p>
-              <h3 className="h3">{c.approach}</h3>
-              <p className="muted">{c.text}</p>
+        <div className="speakers speakers--compact" id="speakers">
+          {SPEAKERS.map((s, i) => (
+            <Reveal as="article" className="speaker" key={s.id} delay={i * 0.08}>
+              <div className="speaker__photo">
+                <img
+                  src={`/speakers/${s.id}.webp`}
+                  srcSet={`/speakers/${s.id}-sm.webp 480w, /speakers/${s.id}.webp 960w`}
+                  sizes="(max-width: 700px) 40vw, 14vw"
+                  alt={s.name}
+                  width={960}
+                  height={1200}
+                  loading="lazy"
+                />
+              </div>
+              <div className="speaker__body">
+                <h3 className="h3 speaker__name">{s.name}</h3>
+                <p className="speaker__role">{s.role}</p>
+                <p className="muted">{s.text}</p>
+              </div>
             </Reveal>
           ))}
         </div>

@@ -59,7 +59,8 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
 
           <motion.h1 className="h1 hero__title" {...fade(0.12)}>
             <span className="hero__brand">INTRANOVA</span>
-            Интенсив практической работы с <span className="grad">психосоматикой</span> и внутренним состоянием
+            Интенсив практической работы с <span className="grad">психосоматикой</span>
+            <span className="hero__title-2">и&nbsp;внутренним состоянием</span>
           </motion.h1>
 
           <motion.p className="hero__lead" {...fade(0.2)}>

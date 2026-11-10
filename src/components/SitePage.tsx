@@ -11,7 +11,6 @@ import Outcomes from "@/components/Outcomes";
 import Prices from "@/components/Prices";
 import Program from "@/components/Program";
 import Signup from "@/components/Signup";
-import Speakers from "@/components/Speakers";
 import Videos from "@/components/Videos";
 import Why from "@/components/Why";
 
@@ -26,7 +25,6 @@ export default function SitePage({ visual = "network", theme }: { visual?: HeroV
         <Format />
         <Methods />
         <Why />
-        <Speakers />
         <Videos />
         <Program />
         <Outcomes />

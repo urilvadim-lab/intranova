@@ -3750,3 +3750,261 @@ button {
     scroll-snap-align: start;
   }
 }
+
+/* ===== Правки по итогам просмотра ===== */
+
+/* заголовок первого экрана: «и внутренним состоянием» — отдельной строкой */
+.hero__title-2 {
+  display: block;
+}
+
+/* «Почему INTRANOVA»: три фразы — три строки, без одиноких слов */
+#why .shead .h2 {
+  font-size: clamp(22px, 3.1vw, 40px);
+  max-width: none;
+  line-height: 1.2;
+}
+
+.why__line {
+  display: block;
+}
+
+/* компактные карточки специалистов: фото слева, текст справа */
+.speakers--compact {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.speakers--compact .speaker {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.speakers--compact .speaker__photo {
+  margin-bottom: 0;
+  border-radius: 14px;
+}
+
+.speakers--compact .speaker__name {
+  font-size: 18px;
+}
+
+.speakers--compact .speaker__role {
+  margin: 4px 0 8px;
+  font-size: 13px;
+}
+
+.speakers--compact .muted {
+  font-size: 14.5px;
+}
+
+@media (max-width: 1100px) {
+  .speakers--compact {
+    grid-template-columns: 1fr;
+  }
+  .speakers--compact .speaker {
+    grid-template-columns: 120px 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .speakers--compact .speaker {
+    grid-template-columns: 92px 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+}
+
+/* видео: слева лента вертикальных по два, справа горизонтальные */
+.vgallery {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.vslider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  outline: none;
+}
+
+.vslider::-webkit-scrollbar {
+  display: none;
+}
+
+.vslider__item {
+  flex: 0 0 calc((100% - 16px) / 2);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.vslider__item .video--vertical {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.vslider__item .video--vertical .video__frame {
+  max-height: none;
+}
+
+.vslider__nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.vslider__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(108, 92, 231, 0.35);
+  background: #fff;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.vslider__btn:hover {
+  background: var(--bg-tint, #eceaf6);
+  transform: translateY(-1px);
+}
+
+.vslider__arrow--back {
+  transform: rotate(180deg);
+}
+
+.vgallery__wide {
+  display: grid;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .vgallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .vslider__item {
+    flex-basis: 74%;
+  }
+}
+
+/* оранжевая плавающая кнопка связи: видна сразу, чуть выше края, мягко парит */
+.fab {
+  bottom: max(28px, calc(env(safe-area-inset-bottom) + 20px));
+  right: max(18px, env(safe-area-inset-right));
+}
+
+.fab__btn {
+  width: 62px;
+  height: 62px;
+  animation: fab-float 3.2s ease-in-out infinite, fab-pulse 3.2s ease-out infinite;
+}
+
+.fab__btn[aria-expanded="true"] {
+  animation: none;
+}
+
+@keyframes fab-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes fab-pulse {
+  0% { box-shadow: 0 10px 28px -8px rgba(21, 22, 43, 0.55), 0 0 0 0 rgba(241, 170, 90, 0.55); }
+  70%, 100% { box-shadow: 0 10px 28px -8px rgba(21, 22, 43, 0.55), 0 0 0 18px rgba(241, 170, 90, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab__btn {
+    animation: none;
+  }
+}
+
+.signup__mail {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--on-night-muted);
+}
+
+.signup__mail a {
+  color: var(--on-night);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* уточнения: заголовок первого экрана, «Почему INTRANOVA», карточки специалистов */
+@media (min-width: 700px) {
+  .hero__title-2 {
+    font-size: 0.82em;
+    white-space: nowrap;
+  }
+}
+
+#why .shead {
+  max-width: none;
+}
+
+#why .shead .h2 {
+  font-size: clamp(20px, 2.6vw, 32px);
+  line-height: 1.25;
+}
+
+#why .shead__lead {
+  max-width: 680px;
+}
+
+.speakers--compact .speaker {
+  grid-template-columns: 84px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 14px;
+  row-gap: 0;
+}
+
+.speakers--compact .speaker__body {
+  display: contents;
+}
+
+.speakers--compact .speaker__photo {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.speakers--compact .speaker__name {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+}
+
+.speakers--compact .speaker__role {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+}
+
+.speakers--compact .speaker .muted {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 4px;
+}
+
+@media (max-width: 1100px) {
+  .speakers--compact .speaker {
+    grid-template-columns: 96px 1fr;
+  }
+}

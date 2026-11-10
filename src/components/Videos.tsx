@@ -43,7 +43,26 @@ function Video({ id, title, text, duration, vertical, place, index }: VideoItem 
   );
 }
 
+const all = [...(VIDEOS as readonly VideoItem[]), ...(GROUP_VIDEOS as readonly VideoItem[])];
+// вертикальные: чередуем — один наш, один Алины; горизонтальные уходят в колонку рядом
+const vertical = (() => {
+  const mine = all.filter((v) => v.vertical && !v.id.startsWith("alina"));
+  const hers = all.filter((v) => v.vertical && v.id.startsWith("alina"));
+  const out: VideoItem[] = [];
+  for (let i = 0; i < Math.max(mine.length, hers.length); i++) {
+    if (mine[i]) out.push(mine[i]);
+    if (hers[i]) out.push(hers[i]);
+  }
+  return out;
+})();
+const wide = all.filter((v) => !v.vertical);
+
 export default function Videos() {
+  const track = useRef<HTMLDivElement>(null);
+  const go = (dir: 1 | -1) => {
+    const el = track.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
+  };
   return (
     <section className="section section--tint" id="video">
       <div className="container">
@@ -52,16 +71,29 @@ export default function Videos() {
           title="Видео с реальной работы"
           lead="Фрагменты нашей работы и отзывы участников — чтобы вы заранее почувствовали формат."
         />
-        <div className="videos">
-          {(VIDEOS as readonly VideoItem[]).map((v, i) => (
-            <Video key={v.id} {...v} index={i} />
-          ))}
-        </div>
-
-        <div className="videos videos--group">
-          {(GROUP_VIDEOS as readonly VideoItem[]).map((v, i) => (
-            <Video key={v.id} {...v} index={i} />
-          ))}
+        <div className="vgallery">
+          <div className="vgallery__slider">
+            <div className="vslider" ref={track} tabIndex={0} aria-label="Вертикальные видео">
+              {vertical.map((v, i) => (
+                <div className="vslider__item" key={v.id}>
+                  <Video {...v} index={i % 2} />
+                </div>
+              ))}
+            </div>
+            <div className="vslider__nav">
+              <button type="button" onClick={() => go(-1)} aria-label="Назад" className="vslider__btn">
+                <Icon name="arrow" size={18} className="vslider__arrow vslider__arrow--back" />
+              </button>
+              <button type="button" onClick={() => go(1)} aria-label="Дальше" className="vslider__btn">
+                <Icon name="arrow" size={18} />
+              </button>
+            </div>
+          </div>
+          <div className="vgallery__wide">
+            {wide.map((v, i) => (
+              <Video key={v.id} {...v} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

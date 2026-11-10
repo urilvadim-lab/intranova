@@ -6,17 +6,9 @@ import { CONTACTS } from "@/content";
 import Icon from "./Icon";
 import TrackedLink from "./TrackedLink";
 
-/** Плавающая кнопка связи: Telegram / MAX / звонок. Появляется после прокрутки первого экрана. */
+/** Плавающая кнопка связи: Telegram / MAX / звонок. Видна всегда, мягко «плавает». */
 export default function FloatingContact() {
-  const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 320);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -24,8 +16,6 @@ export default function FloatingContact() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
-
-  if (!visible && !open) return null;
 
   return (
     <div className="fab">
@@ -47,7 +37,7 @@ export default function FloatingContact() {
               <Icon name="max" size={20} /> Написать в MAX
             </TrackedLink>
             <TrackedLink goal="phone_click" role="menuitem" href={`tel:${CONTACTS.phoneTel}`} onClick={() => setOpen(false)}>
-              <Icon name="phone" size={20} /> Позвонить
+              <Icon name="phone" size={20} /> Позвонить {CONTACTS.phone}
             </TrackedLink>
           </motion.div>
         )}

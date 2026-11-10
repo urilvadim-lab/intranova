@@ -63,9 +63,15 @@ export default function Signup() {
               <Icon name="max" size={18} /> MAX
             </TrackedLink>
             <TrackedLink goal="phone_click" href={`tel:${CONTACTS.phoneTel}`} className="btn btn--outline-light">
-              <Icon name="phone" size={18} /> Позвонить
+              <Icon name="phone" size={18} /> {CONTACTS.phone}
             </TrackedLink>
           </div>
+          <p className="signup__mail">
+            Почта:{" "}
+            <TrackedLink goal="email_click" href={`mailto:${CONTACTS.email}`}>
+              {CONTACTS.email}
+            </TrackedLink>
+          </p>
         </Reveal>
 
         <Reveal className="card signup__card" delay={0.08}>
