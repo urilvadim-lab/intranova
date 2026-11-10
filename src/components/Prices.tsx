@@ -38,7 +38,7 @@ export default function Prices() {
                 <b>{EVENT.dateLabel}</b>, {EVENT.weekday}, {EVENT.time}
               </li>
               <li>
-                <b>{EVENT.city}</b> — {EVENT.place.toLowerCase()}
+                <b>{EVENT.city}, {EVENT.metro}</b> — {EVENT.place.toLowerCase()}
               </li>
               <li>Оплата после подтверждения заявки</li>
               <li>Можно оплатить для другого человека в подарок</li>

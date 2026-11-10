@@ -89,7 +89,7 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
             <li>
               <Icon name="pin" />
               <span>
-                <b>{EVENT.city}</b>офлайн
+                <b>{EVENT.city}</b>{EVENT.metro}
               </span>
             </li>
           </motion.ul>

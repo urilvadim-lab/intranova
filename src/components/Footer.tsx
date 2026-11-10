@@ -9,7 +9,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="footer__muted">
-            {EVENT.title}. {EVENT.dateLabel}, {EVENT.time}, {EVENT.city}.
+            {EVENT.title}. {EVENT.dateLabel}, {EVENT.time}, {EVENT.city}, {EVENT.metro}.
           </p>
         </div>
         <nav className="footer__col" aria-label="Навигация в подвале">

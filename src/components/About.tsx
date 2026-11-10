@@ -15,7 +15,7 @@ export default function About() {
 
         <div className="topics">
           {TOPICS.map((t, i) => (
-            <Reveal as="article" className={`card topic${"wide" in t && t.wide ? " topic--wide" : ""}`} key={t.title} delay={(i % 3) * 0.06}>
+            <Reveal as="article" className="card topic" key={t.title} delay={(i % 3) * 0.06}>
               <span className="topic__icon">
                 <Icon name={t.icon} />
               </span>

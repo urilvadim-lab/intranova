@@ -51,7 +51,7 @@ export default function Signup() {
               <Icon name="calendar" size={18} /> {EVENT.dateLabel}, {EVENT.time}
             </li>
             <li>
-              <Icon name="pin" size={18} /> {EVENT.city}
+              <Icon name="pin" size={18} /> {EVENT.city}, {EVENT.metro}
             </li>
           </ul>
           <p className="signup__direct">Или напишите напрямую:</p>

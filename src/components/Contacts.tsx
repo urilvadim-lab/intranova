@@ -39,7 +39,7 @@ export default function Contacts() {
               <Icon name="phone" />
             </span>
             <h3 className="h3">Телефон</h3>
-            <p className="muted">Позвоните {CONTACTS.phoneName} — ответим на вопросы по телефону.</p>
+            <p className="muted">{CONTACTS.phoneName}. Если не ответим сразу — напишите в Telegram или MAX.</p>
             <TrackedLink goal="phone_click" href={`tel:${CONTACTS.phoneTel}`} className="btn btn--primary">
               <Icon name="phone" size={18} /> {CONTACTS.phone}
             </TrackedLink>
@@ -47,7 +47,7 @@ export default function Contacts() {
         </div>
         <Reveal className="contacts__meta">
           <p>
-            <b>{EVENT.dateLabel}, {EVENT.time}</b> · {EVENT.city} · {EVENT.place}
+            <b>{EVENT.dateLabel}, {EVENT.time}</b> · {EVENT.city}, {EVENT.metro} · {EVENT.place}
           </p>
           <p>
             Почта:{" "}

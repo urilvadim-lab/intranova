@@ -55,7 +55,7 @@ const eventLd = {
   url: SITE,
   location: {
     "@type": "Place",
-    name: "Площадка в Москве (адрес сообщается после записи)",
+    name: "Москва, м. Бауманская (точный адрес сообщается после записи)",
     address: { "@type": "PostalAddress", addressLocality: EVENT.city, addressCountry: "RU" },
   },
   organizer: { "@type": "Organization", name: "INTRANOVA", url: SITE, telephone: CONTACTS.phoneTel, email: CONTACTS.email },
