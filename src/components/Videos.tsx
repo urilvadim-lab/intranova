@@ -55,12 +55,16 @@ const vertical = (() => {
   }
   return out;
 })();
-const wide = all.filter((v) => !v.vertical);
+const wideAll = all.filter((v) => !v.vertical);
+// первый горизонтальный слот переключается стрелками: Марк ↔ работа со страхом в гипнозе
+const wideSlider = ["mark", "hypnosis"].map((id) => wideAll.find((v) => v.id === id)).filter(Boolean) as VideoItem[];
+const wide = wideAll.filter((v) => !wideSlider.some((w) => w.id === v.id));
 
 export default function Videos() {
   const track = useRef<HTMLDivElement>(null);
-  const go = (dir: 1 | -1) => {
-    const el = track.current;
+  const wtrack = useRef<HTMLDivElement>(null);
+  const go = (dir: 1 | -1, ref: React.RefObject<HTMLDivElement | null> = track) => {
+    const el = ref.current;
     if (el) el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
   };
   return (
@@ -81,15 +85,32 @@ export default function Videos() {
               ))}
             </div>
             <div className="vslider__nav">
-              <button type="button" onClick={() => go(-1)} aria-label="Назад" className="vslider__btn">
+              <button type="button" onClick={() => go(-1, track)} aria-label="Назад" className="vslider__btn">
                 <Icon name="arrow" size={18} className="vslider__arrow vslider__arrow--back" />
               </button>
-              <button type="button" onClick={() => go(1)} aria-label="Дальше" className="vslider__btn">
+              <button type="button" onClick={() => go(1, track)} aria-label="Дальше" className="vslider__btn">
                 <Icon name="arrow" size={18} />
               </button>
             </div>
           </div>
           <div className="vgallery__wide">
+            <div className="hslider-wrap">
+              <div className="vslider hslider" ref={wtrack} tabIndex={0} aria-label="Горизонтальные видео">
+                {wideSlider.map((v, i) => (
+                  <div className="hslider__item" key={v.id}>
+                    <Video {...v} index={i} />
+                  </div>
+                ))}
+              </div>
+              <div className="vslider__nav">
+                <button type="button" onClick={() => go(-1, wtrack)} aria-label="Предыдущее видео" className="vslider__btn">
+                  <Icon name="arrow" size={18} className="vslider__arrow vslider__arrow--back" />
+                </button>
+                <button type="button" onClick={() => go(1, wtrack)} aria-label="Следующее видео" className="vslider__btn">
+                  <Icon name="arrow" size={18} />
+                </button>
+              </div>
+            </div>
             {wide.map((v, i) => (
               <Video key={v.id} {...v} index={i} />
             ))}

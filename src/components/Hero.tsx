@@ -54,12 +54,14 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
       <div className="container hero__inner">
         <div className="hero__content">
           <motion.p className="chip" {...fade(0.05)}>
-            <span className="chip__dot" /> INTRANOVA · однодневный интенсив · офлайн
+            <span className="chip__dot" /> Однодневный интенсив · офлайн
           </motion.p>
 
           <motion.h1 className="h1 hero__title" {...fade(0.12)}>
-            <span className="hero__brand">INTRANOVA</span>
-            Интенсив практической работы с <span className="grad">психосоматикой</span>
+            <span className="hero__line">Интенсив практической</span>
+            <span className="hero__line">
+              работы с <span className="grad">психосоматикой</span>
+            </span>
             <span className="hero__title-2">и&nbsp;внутренним состоянием</span>
           </motion.h1>
 

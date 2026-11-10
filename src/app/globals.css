@@ -4008,3 +4008,36 @@ button {
     grid-template-columns: 96px 1fr;
   }
 }
+
+/* заголовок hero: фиксированные строки */
+.hero__line {
+  display: block;
+}
+
+@media (min-width: 700px) {
+  .hero__line {
+    white-space: nowrap;
+  }
+}
+
+/* карточка «Психосоматозы…» на две колонки, список — в два столбца */
+@media (min-width: 901px) {
+  .topic--wide {
+    grid-column: span 2;
+  }
+  .topic--wide .topic__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 28px;
+    margin-top: 6px;
+  }
+  .topics__note {
+    grid-column: 1 / -1;
+  }
+}
+
+/* горизонтальный слайдер: один ролик на экран */
+.hslider__item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-width: 0;
+}
