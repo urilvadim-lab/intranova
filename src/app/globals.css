@@ -4111,3 +4111,45 @@ button {
     gap: 12px;
   }
 }
+
+/* примечание под программой */
+.program__note {
+  margin: 0;
+  padding: 14px 0 12px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* «Стоимость» отделена от «Что вы получите» фоном и линией */
+.prices-section {
+  border-top: 1px solid var(--line);
+}
+
+.prices-section .price-info {
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+/* видео: колонки не должны раздуваться шире экрана из-за лент со свайпом */
+.vgallery {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+
+.vgallery > *,
+.vgallery__slider,
+.vgallery__wide,
+.hslider-wrap {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .vgallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+html,
+body {
+  overflow-x: clip;
+}

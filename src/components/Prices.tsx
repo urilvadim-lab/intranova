@@ -1,10 +1,11 @@
 import { EVENT, INCLUDED, PRICES } from "@/content";
 import Icon from "./Icon";
 import { Reveal, SectionHead } from "./Reveal";
+import TrackedLink from "./TrackedLink";
 
 export default function Prices() {
   return (
-    <section className="section" id="price">
+    <section className="section section--tint prices-section" id="price">
       <div className="container">
         <SectionHead
           label="Стоимость"
@@ -26,9 +27,9 @@ export default function Prices() {
                   </li>
                 ))}
               </ul>
-              <a href="#signup" className={`btn ${p.featured ? "btn--primary" : "btn--outline"} btn--wide`}>
+              <TrackedLink goal="signup_click" href="#signup" className={`btn ${p.featured ? "btn--primary" : "btn--outline"} btn--wide`}>
                 Забронировать
-              </a>
+              </TrackedLink>
             </Reveal>
           ))}
           <Reveal className="price-info" delay={0.16}>

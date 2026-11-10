@@ -1,4 +1,4 @@
-import { EVENT, PROGRAM } from "@/content";
+import { EVENT, PROGRAM, PROGRAM_NOTE } from "@/content";
 import { Reveal, SectionHead } from "./Reveal";
 import TrackedLink from "./TrackedLink";
 
@@ -31,6 +31,7 @@ export default function Program() {
               </li>
             ))}
           </ol>
+          <p className="program__note">{PROGRAM_NOTE}</p>
         </Reveal>
       </div>
     </section>
