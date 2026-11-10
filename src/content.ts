@@ -283,7 +283,7 @@ export const VIDEOS = [
 
 /** Вертикальные ролики с групповой работы Алины: public/video/<id>.mp4 (H.264) и обложка <id>.webp. */
 export const GROUP_VIDEOS = [
-  { id: "alina1", title: "Групповая практика с Алиной", text: "Фрагмент группового занятия.", duration: "1:18", vertical: true },
+  { id: "alina1", title: "Отзыв о погружении", text: "Участница делится впечатлениями после погружения в группе Алины.", duration: "2:32", vertical: true },
   { id: "alina2", title: "Телесная работа в группе", text: "Как проходит практика и что говорят участники после неё.", duration: "1:08", vertical: true },
   { id: "alina3", title: "Практика и обратная связь", text: "Занятие Алины Комиссаровой: фрагмент и обратная связь участников.", duration: "0:49", vertical: true },
 ];
