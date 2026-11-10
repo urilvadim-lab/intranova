@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
+import { track } from "@/analytics";
 import { EVENT, SPEAKERS } from "@/content";
 import dynamic from "next/dynamic";
 import Icon from "./Icon";
@@ -53,16 +54,16 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
       <div className="container hero__inner">
         <div className="hero__content">
           <motion.p className="chip" {...fade(0.05)}>
-            <span className="chip__dot" /> Однодневный интенсив · офлайн
+            <span className="chip__dot" /> INTRANOVA · однодневный интенсив · офлайн
           </motion.p>
 
           <motion.h1 className="h1 hero__title" {...fade(0.12)}>
-            Интенсив практической <br />
-            работы с <span className="grad">психосоматикой</span>
+            <span className="hero__brand">INTRANOVA</span>
+            Интенсив практической работы с <span className="grad">психосоматикой</span> и внутренним состоянием
           </motion.h1>
 
           <motion.p className="hero__lead" {...fade(0.2)}>
-            Работа с телесными симптомами, зажимами, эмоциями и психологическим компонентом заболеваний.
+            Работа с телесными симптомами, тревогой, эмоциональным напряжением и психологическим компонентом заболеваний.
             <span className="hero__lead-2">
               Современные психологические и гипнотические методы терапии и саморегуляции.
             </span>
@@ -100,7 +101,7 @@ export default function Hero({ visual = "network" }: { visual?: HeroVisual }) {
           </motion.div>
 
           <motion.div className="hero__actions" {...fade(0.36)}>
-            <a href="#signup" className="btn btn--primary">
+            <a href="#signup" className="btn btn--primary" onClick={() => track("signup_click")}>
               Записаться <Icon name="arrow" size={18} />
             </a>
             <a href="#program" className="btn btn--outline-light">

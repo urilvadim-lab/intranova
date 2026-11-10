@@ -1,5 +1,6 @@
 import { EVENT, PROGRAM } from "@/content";
 import { Reveal, SectionHead } from "./Reveal";
+import TrackedLink from "./TrackedLink";
 
 export default function Program() {
   return (
@@ -7,14 +8,14 @@ export default function Program() {
       <div className="container program">
         <div className="program__head">
           <SectionHead
-            label="Программа"
+            label="Программа дня"
             title={`${EVENT.dateLabel}, ${EVENT.time}`}
-            lead="Предварительное расписание: оно может уточняться после согласования содержания со спикерами."
+            lead="Шесть этапов в течение дня. Расписание предварительное и может уточняться."
           />
           <Reveal>
-            <a href="#signup" className="btn btn--primary">
+            <TrackedLink goal="signup_click" href="#signup" className="btn btn--primary">
               Записаться
-            </a>
+            </TrackedLink>
           </Reveal>
         </div>
 
@@ -23,7 +24,10 @@ export default function Program() {
             {PROGRAM.map((p) => (
               <li key={p.time} className={`program__row${p.pause ? " program__row--pause" : ""}`}>
                 <span className="program__time">{p.time}</span>
-                <span className="program__title">{p.title}</span>
+                <span className="program__title">
+                  {p.stage && <span className="program__stage">Этап {p.stage}</span>}
+                  {p.title}
+                </span>
               </li>
             ))}
           </ol>

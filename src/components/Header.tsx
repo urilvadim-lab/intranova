@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { EVENT, NAV } from "@/content";
+import { track } from "@/analytics";
+import { EVENT, HEADER_NAV, NAV } from "@/content";
 import Logo from "./Logo";
 
 export default function Header() {
@@ -30,7 +31,7 @@ export default function Header() {
           <Logo />
         </a>
         <nav className="header__nav" aria-label="Основная навигация">
-          {NAV.map((item) => (
+          {HEADER_NAV.map((item) => (
             <a key={item.href} href={item.href}>
               {item.label}
             </a>
@@ -39,7 +40,7 @@ export default function Header() {
         <span className="header__date">
           {EVENT.dateLabel} · {EVENT.city}
         </span>
-        <a href="#signup" className="btn btn--primary btn--sm header__cta">
+        <a href="#signup" className="btn btn--primary btn--sm header__cta" onClick={() => track("signup_click")}>
           Записаться
         </a>
         <button
@@ -71,7 +72,14 @@ export default function Header() {
                   {item.label}
                 </a>
               ))}
-              <a href="#signup" className="btn btn--primary" onClick={() => setOpen(false)}>
+              <a
+                href="#signup"
+                className="btn btn--primary"
+                onClick={() => {
+                  track("signup_click");
+                  setOpen(false);
+                }}
+              >
                 Записаться · {EVENT.dateLabel}
               </a>
             </div>

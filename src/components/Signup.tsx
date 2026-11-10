@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { track } from "@/analytics";
 import { CONTACTS, EVENT } from "@/content";
 import Icon from "./Icon";
 import { Reveal } from "./Reveal";
+import TrackedLink from "./TrackedLink";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -26,6 +28,7 @@ export default function Signup() {
       });
       const json = await res.json().catch(() => null);
       if (!res.ok || String(json?.success) !== "true") throw new Error();
+      track("signup_submit");
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -53,12 +56,15 @@ export default function Signup() {
           </ul>
           <p className="signup__direct">Или напишите напрямую:</p>
           <div className="signup__links">
-            <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" className="btn btn--outline-light">
+            <TrackedLink goal="telegram_click" href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer" className="btn btn--outline-light">
               <Icon name="tg" size={18} /> Telegram
-            </a>
-            <a href={`mailto:${CONTACTS.email}`} className="btn btn--outline-light">
-              <Icon name="mail" size={18} /> Почта
-            </a>
+            </TrackedLink>
+            <TrackedLink goal="max_click" href={CONTACTS.max} target="_blank" rel="noopener noreferrer" className="btn btn--outline-light">
+              <Icon name="max" size={18} /> MAX
+            </TrackedLink>
+            <TrackedLink goal="phone_click" href={`tel:${CONTACTS.phoneTel}`} className="btn btn--outline-light">
+              <Icon name="phone" size={18} /> Позвонить
+            </TrackedLink>
           </div>
         </Reveal>
 

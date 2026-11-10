@@ -1,5 +1,6 @@
 import { CONTACTS, EVENT, NAV } from "@/content";
 import Logo from "./Logo";
+import TrackedLink from "./TrackedLink";
 
 export default function Footer() {
   return (
@@ -19,10 +20,18 @@ export default function Footer() {
           ))}
         </nav>
         <div className="footer__col">
-          <a href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer">
+          <TrackedLink goal="telegram_click" href={CONTACTS.telegram} target="_blank" rel="noopener noreferrer">
             Telegram
-          </a>
-          <a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a>
+          </TrackedLink>
+          <TrackedLink goal="max_click" href={CONTACTS.max} target="_blank" rel="noopener noreferrer">
+            MAX
+          </TrackedLink>
+          <TrackedLink goal="phone_click" href={`tel:${CONTACTS.phoneTel}`}>
+            {CONTACTS.phone}
+          </TrackedLink>
+          <TrackedLink goal="email_click" href={`mailto:${CONTACTS.email}`}>
+            {CONTACTS.email}
+          </TrackedLink>
           <a href="/privacy/">Политика конфиденциальности</a>
         </div>
       </div>

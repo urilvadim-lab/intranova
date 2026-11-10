@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { VIDEOS } from "@/content";
+import { GROUP_VIDEOS, VIDEOS } from "@/content";
 import Icon from "./Icon";
 import { Reveal, SectionHead } from "./Reveal";
 
@@ -49,11 +49,17 @@ export default function Videos() {
       <div className="container">
         <SectionHead
           label="Видео"
-          title="Как проходит работа"
-          lead="Фрагменты нашей работы и отзыв участника — чтобы вы заранее почувствовали формат."
+          title="Видео с реальной работы"
+          lead="Фрагменты нашей работы и отзывы участников — чтобы вы заранее почувствовали формат."
         />
         <div className="videos">
           {(VIDEOS as readonly VideoItem[]).map((v, i) => (
+            <Video key={v.id} {...v} index={i} />
+          ))}
+        </div>
+
+        <div className="videos videos--group">
+          {(GROUP_VIDEOS as readonly VideoItem[]).map((v, i) => (
             <Video key={v.id} {...v} index={i} />
           ))}
         </div>

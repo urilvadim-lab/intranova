@@ -50,3 +50,6 @@ next-env.d.ts
 /src/app/v3/
 /src/components/NeuroHead.tsx
 /src/app/v4/
+
+# исходники видео (на сайт идут перекодированные из public/video)
+/Новая папка/
