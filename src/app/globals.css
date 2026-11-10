@@ -4153,3 +4153,32 @@ html,
 body {
   overflow-x: clip;
 }
+
+/* темы интенсива в подвале — спокойный видимый список */
+.footer__tags {
+  padding-top: 24px;
+  border-top: 1px solid var(--night-line, rgba(255, 255, 255, 0.12));
+  margin-top: 8px;
+}
+
+.footer__tags-title {
+  margin-bottom: 10px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--on-night-muted);
+}
+
+.footer__tags ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer__tags li {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--night-line, rgba(255, 255, 255, 0.14));
+  font-size: 13px;
+  color: var(--on-night-muted);
+}

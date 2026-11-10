@@ -1,4 +1,4 @@
-import { CONTACTS, EVENT, NAV } from "@/content";
+import { CONTACTS, EVENT, NAV, SEO_TAGS } from "@/content";
 import Logo from "./Logo";
 import TrackedLink from "./TrackedLink";
 
@@ -34,6 +34,14 @@ export default function Footer() {
           </TrackedLink>
           <a href="/privacy/">Политика конфиденциальности</a>
         </div>
+      </div>
+      <div className="container footer__tags" aria-label="Темы интенсива">
+        <p className="footer__tags-title">Темы интенсива</p>
+        <ul>
+          {SEO_TAGS.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
       </div>
       <div className="container footer__bottom">© 2026 INTRANOVA</div>
     </footer>

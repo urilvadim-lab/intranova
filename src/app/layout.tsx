@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { CONTACTS, EVENT, METRIKA_ID, PRICES, SPEAKERS } from "@/content";
+import { CONTACTS, EVENT, METRIKA_ID, PRICES, SEO_TAGS, SPEAKERS } from "@/content";
 // Шрифты лежат на нашем хостинге: Google Fonts из РФ работает нестабильно.
 import "@fontsource/unbounded/500.css";
 import "@fontsource/onest/400.css";
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/" },
+  keywords: SEO_TAGS,
   openGraph: {
     title: "INTRANOVA — интенсив практической работы с психосоматикой и внутренним состоянием",
     description: OG_DESCRIPTION,
