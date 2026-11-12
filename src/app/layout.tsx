@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/" },
   keywords: SEO_TAGS,
+  verification: { yandex: "d3884bf2d6a91680" },
   openGraph: {
     title: "INTRANOVA — интенсив практической работы с психосоматикой и внутренним состоянием",
     description: OG_DESCRIPTION,
